@@ -83,12 +83,14 @@ function _handleOrientation(e){
   /* ── Debug readout (visible in the compass card if the element exists) ── */
   const dbg = document.getElementById('qibla-debug');
   if(dbg){
+    /* Test multiple formulas to find which matches expected behavior */
+    const formulaA = (-(alpha + beta * gamma / 90) + 360) % 360;           /* current absolute */
+    const formulaB = (-(alpha + beta * gamma / 90) + 180 + 360) % 360;     /* current relative */
+    const formulaC = (360 - alpha) % 360;                                   /* simple inverse */
+    const formulaD = alpha;                                                 /* raw alpha */
     dbg.textContent =
-      `a:${e.alpha != null ? e.alpha.toFixed(0) : '--'}  ` +
-      `b:${e.beta  != null ? e.beta.toFixed(0)  : '--'}  ` +
-      `g:${e.gamma != null ? e.gamma.toFixed(0) : '--'}  ` +
-      `abs:${e.absolute ? 'Y' : 'N'}  ` +
-      `h:${heading != null ? heading.toFixed(0) : '--'}`;
+      `a:${e.alpha?.toFixed(0)||'--'} b:${e.beta?.toFixed(0)||'--'} g:${e.gamma?.toFixed(0)||'--'} abs:${e.absolute?'Y':'N'} | `+
+      `h:${heading?.toFixed(0)||'--'} | A:${formulaA.toFixed(0)} B:${formulaB.toFixed(0)} C:${formulaC.toFixed(0)} D:${formulaD.toFixed(0)}`;
   }
 
   if(heading === null || Number.isNaN(heading)) return;
