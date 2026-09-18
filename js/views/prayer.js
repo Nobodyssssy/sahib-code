@@ -249,6 +249,12 @@ async function enableLiveCompass(qiblaDeg){
     const ringAngle = qiblaDeg - heading;
     ring.style.transform = `rotate(${ringAngle}deg)`;
 
+    /* Debug: log raw values */
+    const debug = $('qibla-debug');
+    if(debug){
+      debug.textContent = `H:${heading.toFixed(0)} Q:${qiblaDeg.toFixed(0)} Ring:${ringAngle.toFixed(0)} Dev:${Math.round(absDiff)}°`;
+    }
+
     /* How far off we are from the qibla */
     let diff = qiblaDeg - heading;
     while(diff > 180)  diff -= 360;
