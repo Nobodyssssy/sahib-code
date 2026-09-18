@@ -144,7 +144,7 @@ function renderPrayerView(){
           <div class="qibla-mark s">S</div>
           <div class="qibla-mark w">W</div>
 
-          <div class="qibla-kaaba" id="qibla-kaaba" style="transform:rotate(${qibla}deg)">
+          <div class="qibla-kaaba" id="qibla-kaaba">
             <div class="qibla-kaaba-icon">🕋</div>
           </div>
 
@@ -248,6 +248,12 @@ async function enableLiveCompass(qiblaDeg){
        fixed pointer. This works regardless of the phone's reference frame. */
     const ringAngle = qiblaDeg - heading;
     ring.style.transform = `rotate(${ringAngle}deg)`;
+
+    /* Debug: log raw values */
+    const debug = $('qibla-debug');
+    if(debug){
+      debug.textContent = `H:${heading.toFixed(0)} Q:${qiblaDeg.toFixed(0)} Ring:${ringAngle.toFixed(0)} Dev:${Math.round(absDiff)}°`;
+    }
 
     /* How far off we are from the qibla */
     let diff = qiblaDeg - heading;
