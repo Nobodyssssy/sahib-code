@@ -1,0 +1,40 @@
+# Local server script — not part of the deployable app
+start.py
+
+# Backups / exports
+*.json
+!package.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+33/
+# Prayer audio — add when ready (if using)
+assets/audio/
+
+# Keep books and icons tracked — only exclude audio
+# PDF quality tools — local only
+_pdf_backup/
+_pdf_check_output/
+check-pdf-quality.py
+recompress-books.py
+pdf-quality-report.json
+auto-icons.ps1
+build-icons.ps1
+node_modules/
+*.bak
+*.backup
+.DS_Store
+Thumbs.db

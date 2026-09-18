@@ -1,0 +1,416 @@
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:100;background:var(--surface);
+  border-bottom:1px solid var(--border);padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;height:60px;
+}
+.logo{display:flex;align-items:center;cursor:pointer;user-select:none;}
+.logo:hover .logo-icon{transform:scale(1.08);}
+.logo-icon{
+  width:34px;height:34px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:transform var(--tr);
+}
+.logo-text{font-family:'Amiri',serif;font-size:19px;color:var(--accent);font-weight:700;line-height:1;}
+.logo-sub{font-size:10px;color:var(--text3);}
+.logo-date{
+  font-size:10px;
+  color:var(--text3);
+  margin-top:2px;
+  font-family:'Amiri',serif;
+  direction:rtl;
+  white-space:nowrap;
+}
+
+/* Hide the header date on narrow phones — it's shown in the quote card area instead */
+@media(max-width:600px){
+  .logo-date{display:none;}
+}
+.hright{display:flex;align-items:center;gap:6px;}
+
+/* SEARCH BAR */
+.search-bar{
+  padding: 14px 20px 0;
+  max-width: 720px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+}
+@media(min-width:1200px){
+  .search-bar{
+    max-width: 840px;
+  }
+}
+.search-wrap{position:relative;}
+.search-wrap input{
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 44px 12px 44px;
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+  transition: border-color var(--tr);
+  box-sizing: border-box;
+}
+.search-wrap input:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+.search-wrap input:focus{border-color:var(--accent);}
+.search-wrap input::placeholder{color:var(--text3);}
+.search-icon{
+  position:absolute;
+  left:13px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--text3);
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.search-icon svg{
+  width:14px;
+  height:14px;
+}
+.search-clear{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  color:var(--text3);
+  cursor:pointer;
+  padding:4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.search-clear:hover{color:var(--text2);}
+.search-clear svg{width:16px;height:16px;}
+
+/* VIEWS */
+.view{display:none;animation:fadeIn .18s ease;}
+.view.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+.page-header{
+  padding:20px 20px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.page-header .cats-settings-btn{
+  flex-shrink:0;
+}
+.page-title{font-family:'Amiri',serif;font-size:22px;color:var(--accent);}
+.page-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+
+/* CATS GRID */
+.cats-grid{
+  padding:0 20px 80px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:14px;
+}
+.cat-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+  padding:20px 16px;cursor:pointer;transition:all var(--tr);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+}
+.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cc,var(--accent));}
+.cat-card:hover{border-color:var(--cc,var(--accent));transform:translateY(-3px);box-shadow:var(--sh);}
+.cat-icon{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  transition:transform var(--tr);
+}
+.cat-card:hover .cat-icon{
+  transform:scale(1.08);
+}
+.cat-icon svg{
+  width:24px;
+  height:24px;
+}
+.cat-name{font-family:'Amiri',serif;font-size:16px;line-height:1.3;}
+.cat-en{font-size:11px;color:var(--text3);}
+.cat-count{font-size:11px;font-weight:700;padding:2px 9px;border-radius:50px;border:1px solid;}
+.cat-prog-bar{width:100%;height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:2px;}
+.cat-prog-fill{height:100%;border-radius:2px;transition:width .4s ease;}
+.cat-edit-row{display:flex;gap:6px;margin-top:2px;}
+.cat-sm-btn{
+  width:24px;height:24px;border-radius:6px;border:1px solid var(--border);
+  background:var(--surface2);color:var(--text3);font-size:10px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all var(--tr);
+}
+.cat-sm-btn.edit:hover{color:var(--blue);border-color:var(--blue);}
+.cat-sm-btn.del:hover{color:var(--red);border-color:var(--red);}
+.cat-new-card{
+  background:transparent;border:1px dashed var(--border);border-radius:var(--r);
+  padding:20px 16px;cursor:pointer;transition:all var(--tr);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;color:var(--text3);font-size:13px;min-height:130px;
+}
+.cat-new-card:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ADKAR LIST */
+.back-bar{padding:14px 20px 0;display:flex;align-items:center;gap:10px;}
+.adkar-grid{padding:14px 20px 80px;display:flex;flex-direction:column;gap:10px;}
+
+/* FAVS */
+.favs-header{padding:20px 20px 14px;display:flex;align-items:center;gap:10px;}
+.favs-title{font-family:'Amiri',serif;font-size:20px;color:var(--accent);}
+
+/* SEARCH RESULTS */
+.search-results{padding:14px 20px 80px;display:flex;flex-direction:column;gap:10px;}
+/* ═══════════════════════════════════════════════════════════
+   Header redesign — 3-column layout with centered date
+   ═══════════════════════════════════════════════════════════ */
+
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:6px 16px;
+  height:auto;
+  min-height:68px;
+  direction:ltr;
+}
+
+/* Left group — menu, favorites, add */
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  direction:ltr;
+}
+
+/* right — menu, favorites, add */
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  direction:rtl;   /* logo internals stay RTL (icon on right of text) */
+}
+
+/* Right block — logo */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  user-select:none;
+  direction:rtl;    /* Logo internals stay RTL */
+}
+.logo-icon{
+  width:61px;
+  height:61px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  transition:transform var(--tr);
+  background:transparent;
+}
+.logo-icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  /* No border-radius, no background — the SVG's own design shows through */
+}
+.logo-text{
+  font-family:'Amiri',serif;
+  font-size:17px;
+  color:var(--accent);
+  font-weight:700;
+  line-height:1.1;
+  direction:rtl;
+  text-align:right;
+}
+.logo-sub{
+  font-size:10px;
+  color:var(--text3);
+  text-align:right;
+  letter-spacing:0.03em;
+}
+
+/* Small icon add-button (in the left group) */
+.btn-add-icon{
+  font-weight:700;
+  font-size:15px;
+}
+
+/* right group — menu, favorites, add */
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  grid-area:logo;   /* if header uses grid-template-areas */
+  /* or: justify-self:end; */
+}
+/* ═══════════════════════════════════════════════════════════
+   Main menu dropdown
+   ═══════════════════════════════════════════════════════════ */
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  z-index:150;
+  background:rgba(0,0,0,.5);
+  backdrop-filter:blur(4px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity var(--tr);
+}
+.menu-overlay.open{
+  opacity:1;
+  pointer-events:all;
+}
+.menu-dropdown{
+  position:absolute;
+  top:70px;
+  left:16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--rs);
+  box-shadow:var(--sh);
+  min-width:220px;
+  padding:6px;
+  transform:translateY(-10px) scale(.96);
+  opacity:0;
+  transition:transform .18s cubic-bezier(.34,1.4,.64,1), opacity .18s ease;
+}
+.menu-overlay.open .menu-dropdown{
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
+.menu-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  padding:11px 14px;
+  background:transparent;
+  border:none;
+  color:var(--text);
+  font-family:inherit;
+  font-size:14px;
+  text-align:left;
+  border-radius:8px;
+  cursor:pointer;
+  transition:background var(--tr), color var(--tr);
+}
+.menu-item:hover{
+  background:var(--glow);
+  color:var(--accent);
+}
+.menu-icon{
+  width:22px;
+  height:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  color:var(--text2);
+}
+.menu-icon svg{
+  width:18px;
+  height:18px;
+}
+.menu-item:hover .menu-icon{
+  color:var(--accent);
+}
+.menu-label{
+  flex:1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Mobile adjustments
+   ═══════════════════════════════════════════════════════════ */
+@media(max-width:480px){
+  header{padding:8px 12px;gap:8px;min-height:auto;}
+  .header-date-ar{font-size:13px;}
+  .header-date-en{display:none;}      /* hide Gregorian on small screens */
+  .header-left{gap:4px;}
+  .icon-btn{width:34px;height:34px;font-size:14px;}
+  .btn-add-icon{font-size:16px;}
+    .logo-icon{
+    width:44px;
+    height:44px;
+  }
+  .logo-text{font-size:15px;}
+  .logo-sub{display:none;}
+  .menu-dropdown{
+    top:60px;
+    left:8px;
+    right:8px;
+    min-width:auto;
+  }
+}
+
+@media(max-width:400px){
+  .header-date-ar{font-size:11px;}
+  .header-left{gap:3px;}
+  .icon-btn{width:32px;height:32px;font-size:13px;}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Header icon color overrides
+   ═══════════════════════════════════════════════════════════ */
+
+/* Add button is gold */
+.btn-add-icon{
+  color:var(--accent) !important;
+  font-weight:700;
+}
+.btn-add-icon:hover{
+  background:var(--glow) !important;
+  color:var(--accent2) !important;
+}
+
+/* Favorites button has star color */
+#btn-favs{
+  color:var(--text2);
+}
+#btn-favs:hover{
+  color:#e8c97a;
+  border-color:#e8c97a;
+  background:rgba(232,201,122,.1);
+}
+#btn-favs.active{
+  color:#e8c97a;
+  border-color:#e8c97a;
+  background:rgba(232,201,122,.1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Favorites star — force gold
+   ═══════════════════════════════════════════════════════════ */
+#btn-favs,
+#btn-favs svg,
+header #btn-favs {
+  color: #e8c97a !important;
+}
+#btn-favs:hover {
+  color: #f0d580 !important;
+  border-color: #e8c97a !important;
+  background: rgba(232,201,122,.12) !important;
+}
+#btn-favs.active {
+  color: #e8c97a !important;
+  border-color: #e8c97a !important;
+  background: rgba(232,201,122,.15) !important;
+}
