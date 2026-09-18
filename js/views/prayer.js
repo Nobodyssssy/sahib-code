@@ -144,7 +144,7 @@ function renderPrayerView(){
           <div class="qibla-mark s">S</div>
           <div class="qibla-mark w">W</div>
 
-          <div class="qibla-kaaba" id="qibla-kaaba" style="transform:rotate(${qibla}deg)">
+          <div class="qibla-kaaba" id="qibla-kaaba">
             <div class="qibla-kaaba-icon">🕋</div>
           </div>
 
