@@ -72,7 +72,7 @@
   --tr: .22s cubic-bezier(.4,0,.2,1);
   
     /* ─── Type scale — 7 sizes, 12px base ─── */
-  --fs-xs:  10px;   /* tiny — meta, badges */
+  --fs-xs:  11px;   /* tiny — meta, badges */
   --fs-sm:  12px;   /* small — captions, labels */
   --fs-md:  14px;   /* body — default UI text */
   --fs-lg:  16px;   /* emphasis — headlines, inputs */
